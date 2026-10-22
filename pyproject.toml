@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chemcost"
+version = "0.1.0"
+description = "ChemCost: a benchmark for chemical reaction procurement cost estimation by LLM agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["benchmark", "llm-agents", "tool-use", "chemistry", "procurement-cost"]
+
+dependencies = [
+    "rdkit",
+    "httpx>=0.25",
+    "huggingface_hub>=0.23",
+]
+
+[project.urls]
+Repository = "https://github.com/HeinzVonHank/ChemCost"
+Dataset = "https://huggingface.co/datasets/YoungerWu/ChemCost"
+
+[project.optional-dependencies]
+eval = [
+    "openai>=1.0",
+    "anthropic>=0.18",
+    "claude-agent-sdk>=0.1.65",
+    "mcp>=1.2,<2",  # the Codex baseline serves the tools over MCP (FastMCP; renamed in mcp 2)
+]
+tests = [
+    "pytest>=7.0",
+    "ruff>=0.3",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.ruff.lint.per-file-ignores]
+# prompt text: wrapping it would change what the model reads
+"src/chemcost/baselines/react_agent.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chemcost"]
