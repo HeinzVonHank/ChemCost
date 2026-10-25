@@ -108,10 +108,10 @@ Code: MIT. Dataset and pricing database: CC BY-SA 4.0, because most reactions ar
 ## Citation
 
 ```bibtex
-@inproceedings{chemcost2026,
-  title     = {ChemCost: A Benchmark for Chemical Reaction Procurement Cost Estimation by LLM Agents},
-  author    = {TODO},
-  booktitle = {TODO},
+@inproceedings{wu2026chemcost,
+  title     = {Can Agents Price a Reaction? Evaluating {LLMs} on Chemical Cost Reasoning},
+  author    = {Wu, Yuyang and Huang, Yue and Shen, Shuaike and Wang, Xujian and Zhang, Shuhao and Xue, Qiyao and Liu, Weichen and Gao, Runtian and Ma, Jian and Zhang, Xiangliang and Isayev, Olexandr},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track},
   year      = {2026}
 }
 ```
