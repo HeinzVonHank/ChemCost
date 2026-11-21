@@ -1,0 +1,19 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.HeinzVonHank/chemcost",
+  "title": "ChemCost",
+  "description": "ChemCost benchmark tools: frozen supplier pack quotes for 2,261 chemicals and a safe calculator.",
+  "repository": {"url": "https://github.com/HeinzVonHank/ChemCost", "source": "github"},
+  "websiteUrl": "https://chemcost.org",
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "chemcost",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {"type": "stdio"},
+      "packageArguments": [{"type": "positional", "value": "mcp"}]
+    }
+  ]
+}

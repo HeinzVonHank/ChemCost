@@ -1,11 +1,19 @@
-# ChemCost
+# ChemCost: Can Agents Price a Reaction?
 
-A benchmark for chemical reaction procurement-cost estimation by LLM agents.
+[![arXiv](https://img.shields.io/badge/arXiv-2605.07251-b31b1b.svg)](https://arxiv.org/abs/2605.07251)
+[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS%202026-Evaluations%20%26%20Datasets-4b44ce.svg)](https://neurips.cc/virtual/2026/poster/139478)
+[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-YoungerWu%2FChemCost-yellow.svg)](https://huggingface.co/datasets/YoungerWu/ChemCost)
+[![Website](https://img.shields.io/badge/web-chemcost.org-0E7A4A.svg)](https://chemcost.org)
+
+A judge-free benchmark for LLM agents on chemical reaction procurement-cost estimation: 1,427 reactions (1,359 single-step, 68 multi-step routes) with deterministic $/g labels computed from a frozen snapshot of pack-level supplier quotes. NeurIPS 2026, Evaluations and Datasets Track.
+
+<!-- mcp-name: io.github.HeinzVonHank/chemcost -->
 
 Given a reaction as it was run in the laboratory (component names and amounts used, the product's molecular formula, and the yield), an agent must return the US-dollar cost of buying enough material to run the reaction at 1 mmol of a named scale reference compound, normalized per gram of product. Supplier prices, structures, equivalents, and molecular weights are withheld, so solving a reaction requires identifying each chemical from a deliberately unfamiliar name, deriving the stoichiometry from the laboratory amounts, retrieving supplier quotes, choosing the right packs, and aggregating cost. Ground truth is computed deterministically from a frozen supplier-quote snapshot, so evaluation is judge-free.
 
+- **Paper:** [arXiv:2605.07251](https://arxiv.org/abs/2605.07251) (NeurIPS 2026, Evaluations and Datasets Track)
 - **Dataset:** [huggingface.co/datasets/YoungerWu/ChemCost](https://huggingface.co/datasets/YoungerWu/ChemCost)
-- **Paper:** _link to be added_
+- **Project page:** [chemcost.org](https://chemcost.org)
 
 The dataset contains single-step reactions and multi-step synthesis routes, each with a deterministic procurement-cost label, plus a frozen database of pack-level supplier quotes (a frozen 2026 snapshot).
 
@@ -22,6 +30,21 @@ python scripts/verify_labels.py      # recompute every label from the frozen DB
 ```
 
 `download_data.py` writes `data/chemcost.jsonl` and `data/pricing_db.sqlite`. Set `CHEMCOST_PRICING_DB` to use a database at a different path.
+
+## Benchmark tools as an MCP server
+
+The two benchmark tools (`get_supplier_quotes`, `calculate`) can be served over stdio MCP to any MCP client. The pricing database is downloaded to `~/.cache/chemcost` on first run unless `CHEMCOST_PRICING_DB` is set.
+
+```bash
+pip install chemcost   # or: uvx chemcost mcp
+chemcost mcp
+```
+
+```json
+{"mcpServers": {"chemcost": {"command": "chemcost", "args": ["mcp"]}}}
+```
+
+`CHEMCOST_TOOLS` (comma-separated) restricts the exposed tools and `CHEMCOST_TOOL_BUDGET` caps the number of calls per process.
 
 ## Running an evaluation
 

@@ -9,15 +9,28 @@ description = "ChemCost: a benchmark for chemical reaction procurement cost esti
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-keywords = ["benchmark", "llm-agents", "tool-use", "chemistry", "procurement-cost"]
+keywords = ["benchmark", "llm-agents", "tool-use", "chemistry", "procurement-cost", "mcp", "evaluation"]
+authors = [{ name = "Yuyang Wu" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 dependencies = [
     "rdkit",
     "httpx>=0.25",
     "huggingface_hub>=0.23",
+    "mcp>=1.2,<2",  # `chemcost mcp` and the Codex baseline serve the tools over MCP (FastMCP; renamed in mcp 2)
 ]
 
+[project.scripts]
+chemcost = "chemcost.cli:main"
+
 [project.urls]
+Homepage = "https://chemcost.org"
+Paper = "https://arxiv.org/abs/2605.07251"
 Repository = "https://github.com/HeinzVonHank/ChemCost"
 Dataset = "https://huggingface.co/datasets/YoungerWu/ChemCost"
 
@@ -26,7 +39,6 @@ eval = [
     "openai>=1.0",
     "anthropic>=0.18",
     "claude-agent-sdk>=0.1.65",
-    "mcp>=1.2,<2",  # the Codex baseline serves the tools over MCP (FastMCP; renamed in mcp 2)
 ]
 tests = [
     "pytest>=7.0",

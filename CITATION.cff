@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use ChemCost, please cite the paper below."
+title: "ChemCost"
+type: software
+repository-code: "https://github.com/HeinzVonHank/ChemCost"
+url: "https://chemcost.org"
+license: MIT
+keywords: [benchmark, llm-agents, tool-use, chemistry, procurement-cost]
+authors:
+  - {family-names: Wu, given-names: Yuyang}
+  - {family-names: Huang, given-names: Yue}
+  - {family-names: Shen, given-names: Shuaike}
+  - {family-names: Wang, given-names: Xujian}
+  - {family-names: Zhang, given-names: Shuhao}
+  - {family-names: Xue, given-names: Qiyao}
+  - {family-names: Liu, given-names: Weichen}
+  - {family-names: Gao, given-names: Runtian}
+  - {family-names: Ma, given-names: Jian}
+  - {family-names: Zhang, given-names: Xiangliang}
+  - {family-names: Isayev, given-names: Olexandr}
+preferred-citation:
+  type: conference-paper
+  title: "Can Agents Price a Reaction? Evaluating LLMs on Chemical Cost Reasoning"
+  collection-title: "Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track"
+  year: 2026
+  identifiers:
+    - {type: doi, value: "10.48550/arXiv.2605.07251", description: "arXiv preprint"}
+  url: "https://arxiv.org/abs/2605.07251"
+  authors:
+    - {family-names: Wu, given-names: Yuyang}
+    - {family-names: Huang, given-names: Yue}
+    - {family-names: Shen, given-names: Shuaike}
+    - {family-names: Wang, given-names: Xujian}
+    - {family-names: Zhang, given-names: Shuhao}
+    - {family-names: Xue, given-names: Qiyao}
+    - {family-names: Liu, given-names: Weichen}
+    - {family-names: Gao, given-names: Runtian}
+    - {family-names: Ma, given-names: Jian}
+    - {family-names: Zhang, given-names: Xiangliang}
+    - {family-names: Isayev, given-names: Olexandr}
